@@ -1,0 +1,38 @@
+[package]
+name = "ksef"
+version = "0.1.0"
+edition = "2024"
+description = "Generate Polish VAT invoices as PDF and FA(3) XML, and send them to KSeF on request."
+license = "MIT"
+repository = "https://github.com/pochka15/ksef-faktura"
+keywords = ["ksef", "faktura", "invoice", "fa3", "poland"]
+publish = false
+
+[dependencies]
+# data
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+jiff = { version = "0.2", features = ["serde"] }
+quick-xml = "0.37"
+# KSeF transport and crypto (RustCrypto crates pinned to one generation: rsa 0.9 / sha2 0.10 / rand 0.8)
+ureq = "2"
+base64 = "0.22"
+rsa = { version = "0.9", features = ["sha2"] }
+sha2 = "0.10"
+rand = "0.8"
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc"] }
+x509-cert = "0.2"
+# PDF
+typst = "0.15"
+typst-pdf = "0.15"
+typst-layout = "0.15"
+typst-as-lib = "0.17"
+
+[profile.release]
+# smaller binary to share (`make dist`); no debug symbols needed there
+strip = true
+
+[profile.dev.package."*"]
+# typst is painfully slow unoptimised; deps get built once anyway
+opt-level = 2
