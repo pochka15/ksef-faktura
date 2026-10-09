@@ -1,4 +1,4 @@
-# ksef-faktura
+# ksef-faktura 💯 Vibe-coded 🤷‍♂️
 
 **Darmowy program do faktur VAT z wysyłką do KSeF**: PDF dla klienta i XML FA(3) dla Krajowego Systemu
 e-Faktur, z czytelnym potwierdzeniem przed każdą wysyłką. Dla JDG i B2B, które wystawiają kilka faktur w
